@@ -69,10 +69,10 @@ func main() {
 	// we dont allow writing to any other files because that would be a security risk
 	// the data is end to end encrypted, so we dont need to worry about the server being compromised
 	app.Put("/*", func(c *fiber.Ctx) error {
-		file := path.Join(root, c.Path())
-		if !allowed.MatchString(file) {
+		if !allowed.MatchString(c.Path()) {
 			return c.SendStatus(fiber.StatusForbidden)
 		}
+		file := path.Join(root, c.Path())
 		err := os.WriteFile(file, c.Body(), 0644)
 		if err != nil {
 			return c.SendStatus(fiber.StatusInternalServerError)

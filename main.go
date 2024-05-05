@@ -68,7 +68,7 @@ func main() {
 	// readprogress.json is the encrypted file containing the user's read progress
 	// we dont allow writing to any other files because that would be a security risk
 	// the data is end to end encrypted, so we dont need to worry about the server being compromised
-	app.Post("/*", func(c *fiber.Ctx) error {
+	app.Put("/*", func(c *fiber.Ctx) error {
 		file := path.Join(root, c.Path())
 		if !allowed.MatchString(file) {
 			return c.SendStatus(fiber.StatusForbidden)

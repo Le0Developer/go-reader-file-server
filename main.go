@@ -62,7 +62,7 @@ func main() {
 	})
 
 	// we only allow writing to these files:
-	allowed := regexp.MustCompile(`^[a-z\d_-]+-(starstore|readprogress)\.json$`)
+	allowed := regexp.MustCompile(`^\/[a-z\d_-]+-(starstore|readprogress)\.json$`)
 	// [a-z\d_-]+ is the username
 	// starstore.json is the encrypted file containing the user's starred items
 	// readprogress.json is the encrypted file containing the user's read progress

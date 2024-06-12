@@ -58,6 +58,7 @@ func main() {
 		}
 
 		// we dont use compression because the files are encrypted
+		c.Set("cache-control", "no-transform") // we dont want the reverse proxy to compress the files
 		return c.SendFile(file)
 	})
 

@@ -3,7 +3,7 @@ services:
     build: .
     volumes:
       - /media/storage:/data
-    envfile:
+    env_file:
       - env/web.env
 
   cloudflared:

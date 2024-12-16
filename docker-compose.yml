@@ -1,0 +1,15 @@
+services:
+  server:
+    build: .
+    volumes:
+      - /media/storage:/data
+    envfile:
+      - env/web.env
+
+  cloudflared:
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    env_file:
+      - env/tunnel.env
+

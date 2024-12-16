@@ -9,6 +9,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/keyauth"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 func main() {
@@ -20,6 +21,7 @@ func main() {
 
 	corsOrigins := os.Getenv("CORS_ORIGINS")
 
+	app.Use(logger.New())
 	app.Use(cors.New(cors.Config{
 		AllowOrigins:     corsOrigins,
 		AllowHeaders:     "Authorization, If-Modified-Since",

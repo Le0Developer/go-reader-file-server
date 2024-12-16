@@ -7,7 +7,7 @@ services:
       - env/web.env
 
   cloudflared:
-    image: cloudflare/cloudflared
+    image: ghcr.io/shmick/docker-cloudflared
     restart: unless-stopped
     command: tunnel run
     env_file:
